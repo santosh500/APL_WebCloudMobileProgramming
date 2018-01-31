@@ -1,4 +1,4 @@
-function myFunction() {
+function changeCourse() {
     var EL = document.getElementById("edLevel");
     var el = EL.options[EL.selectedIndex].value;
     var SEM = document.getElementById("sem");
@@ -156,11 +156,18 @@ function myFunction() {
         document.getElementById("but3").class = "";
         document.getElementById("but3").role = "";
         document.getElementById("but3").innerHTML = "";
-        //href="class1.html" class="btn btn-info" role="button"
+
 
     }
 
 
-    // The function returns the product of p1 and p2
+
+}
+
+function submitClass()
+{
+    document.getElementById("avail").innerHTML = "Total Seats Available: 19";
+    document.getElementById("fill").innerHTML = "Current Seats Filled: 11";
+    document.getElementById("status").innerHTML = "Success! you have been added";
 }
 
