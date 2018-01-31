@@ -1,10 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<p>HI THERE</p>
+
+
+<div class="container">
+    <div class="form-group">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Age:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="#">1st Year</a></li>
+            <li><a href="#">2nd Year</a></li>
+            <li><a href="#">Graduate</a></li>
+        </ul>
+    </div>
+
+    <p>Reviews</p>
+    <div class="panel panel-default">
+        <div class="panel-heading">Ted Franklin, Masters CS</div>
+        <div class="panel-body"><div class="row">
+        <div class="col-sm-4" style="background-color: white;"><img src="bulbasaur.png" style="width: 200px; height: 200px;"></div>
+        <div class="col-sm-8" style="background-color:white;"><img src="1374754-200.png" style="width: 100px; height: 100px;"><p>This is an average class. Not much to learn but the professor was great.</p></div>
+    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Fred Walters, Masters CS</div>
+                <div class="panel-body"><div class="row">
+                    <div class="col-sm-4" style="background-color: white;"><img src="snorlax.jpg" style="width: 200px; height: 200px;"></div>
+                    <div class="col-sm-8" style="background-color:white;"><img src="fivestar.png" style="width: 100px; height: 100px;"><p>This is a great class!</p></div>
+                </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Kirk Cousins, Masters CS</div>
+                        <div class="panel-body"><div class="row">
+                            <div class="col-sm-4" style="background-color: white;"><img src="snorlax.jpg" style="width: 200px; height: 200px;"></div>
+                            <div class="col-sm-8" style="background-color:white;"><img src="1374754-200.png" style="width: 100px; height: 100px;"><p>Alright class wasn't too bad.</p></div>
+                        </div>
+        </div>
 </body>
 </html>
