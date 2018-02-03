@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
+    <script src="mainJS.js"></script>
     <title>Title</title>
 </head>
 <body>
-<p>HI THERE</p>
+
+
+<div class="container">
+    <h1>Class Registration Page</h1>
+    <div class="form-group">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Age:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Degree:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="#">1st Year</a></li>
+            <li><a href="#">2nd Year</a></li>
+            <li><a href="#">Graduate</a></li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Phone Number:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    
+    <p id="avail">Total Seats Available: 20</p>
+    <p id="fill">Current Seats Filled: 10</p>
+    <a onclick="submitClass()" class="btn btn-info" role="button">Submit</a>
+    <p id="status"></p>
+</div>
 </body>
 </html>
