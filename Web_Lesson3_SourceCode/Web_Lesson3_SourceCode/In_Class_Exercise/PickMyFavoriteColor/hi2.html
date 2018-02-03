@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script>
+
+        $( "#outer" ).mouseover(function() {
+            $( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+        });
+    </script>
+</head>
+<body>
+<div id="outer">
+    Outer
+    <div id="inner">
+        Inner
+    </div>
+</div>
+<div id="other">
+    Trigger the handler
+</div>
+<div id="log"></div>
+</body>
+</html>
