@@ -13,7 +13,7 @@ function getGithubInfo(user) {
                 var y = result.login;
                 var i = result.avatar_url;
 
-                $("#things").html('<p>'+t+' '+y+'</p>'+'<img src='+i+' width="80" height="80"></img>');
+                $("#things").html('<p>'+t+'<br> '+y+'</p>'+'<br><img src='+i+' width="80" height="80"></img>');
                 $('avatar').html('hi there');
                 // $("#things").html('<h3>NO USER FOUND</h3>')
             }
@@ -43,8 +43,6 @@ function showUser(user) {
 
 function noSuchUser(username) {
     //3. set the elements such that a suitable message is displayed
-
-
 }
 
 
