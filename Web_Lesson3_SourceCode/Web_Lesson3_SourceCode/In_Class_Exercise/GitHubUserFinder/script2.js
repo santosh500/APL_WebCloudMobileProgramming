@@ -1,28 +1,28 @@
 function getGithubInfo(user) {
     //1. Create an instance of XMLHttpRequest class and send a GET request using it. The function should finally return the object(it now contains the response!)
     // Make request to Github
-   // $('#things').html('<h2>'+'No User Info Found2'+user+' </h2>');
+    // $('#things').html('<h2>'+'No User Info Found2'+user+' </h2>');
     $.ajax({url: 'https://api.github.com/users/'+username, success: function(result){
 
-        if(result.login == null)
-        {
-            //$("#things").html('<h3>NO USER FOUND</h3>')
-        }
-        else{
-            var t = result.name;
-            var y = result.login;
-            var i = result.avatar_url;
+            if(result.login == null)
+            {
+                //$("#things").html('<h3>NO USER FOUND</h3>')
+            }
+            else{
+                var t = result.name;
+                var y = result.login;
+                var i = result.avatar_url;
 
-            $("#things").html('<p>'+t+' '+y+'</p>'+'<img src='+i+' width="80" height="80"></img>');
-            $('avatar').html('hi there');
-           // $("#things").html('<h3>NO USER FOUND</h3>')
-        }
+                $("#things").html('<p>'+t+' '+y+'</p>'+'<img src='+i+' width="80" height="80"></img>');
+                $('avatar').html('hi there');
+                // $("#things").html('<h3>NO USER FOUND</h3>')
+            }
 
-           // $('avatar').html('<img src='+i+' width="80" height="80"></img>');
+            // $('avatar').html('<img src='+i+' width="80" height="80"></img>');
         },error: function(XMLHttpRequest, textStatus, errorThrown){
 
 
-                $("#things").html('<h3>USER NOT FOUND</h3>')
+            $("#things").html('<h3>USER NOT FOUND</h3>')
 
 
 
