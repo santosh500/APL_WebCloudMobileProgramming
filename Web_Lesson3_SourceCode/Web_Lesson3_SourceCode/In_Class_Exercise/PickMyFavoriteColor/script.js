@@ -17,7 +17,7 @@ $(document).ready(function(){
     //1.As the page loa
     // ds add each color in the colors array to the div '#colors'
     for (i = 0; i < colors.length; i++) {
-        $('#colors').prepend("<div class='item' style='background-color: " + colors[i] + ";'><div>");
+        $('#colors').prepend("<div class='item' id='orange' style='background-color: " + colors[i] + ";'><div>");
     }
 
 //set the preview color to one of the colors in the colors array randomly
@@ -35,10 +35,10 @@ $(document).ready(function(){
         addBox(color);
     })
 
-    $("#colors").hover(function(){
-        $("#colors").css("background-color", "yellow");
+    $('#orange').hover(function(){
+        $('.preview').css("background-color",$('#orange').css("background-color"));
     }, function(){
-        $(this).css("background-color", "pink");
+        $('.preview').css("background-color", "white");
     });
 //3.Write events handlers such that whenever any item in the favorite colors is clicked or hovered, the color gets displayed in the preview div
 
