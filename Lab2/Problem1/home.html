@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Home Page</title>
+    <script>
+        // function topic()
+        // {
+        //     var t = document.getElementById("topic").value;
+        //     var url = 'https://newsapi.org/v2/top-headlines?' +
+        //         'q=' + t + '&' +
+        //         'from=2018-02-05&' +
+        //         'sortBy=popularity&' +
+        //         'apiKey=9e4b4e7b43514fff99d45e510434098b';
+        //
+        //     var req = new Request(url);
+        //
+        //     fetch(req)
+        //         .then(function(response) {
+        //             console.log(response.json());
+        //             var t = JSON.parse(response);
+        //             resolve(t);
+        //
+        //             document.getElementById("display").innerHTML =t;
+        //         })
+        // }
+
+
+
+
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://newsapi.org/v2/everything?q=bitcoin&from=2018-0205&sortBy=popularity&apiKey=9e4b4e7b43514fff99d45e510434098b',
+                success: function (result) {
+                    //var t = result.articles.length;
+                    var t = result.articles[0].author;
+                    var i = result.articles[1].urlToImage;
+                    console.log(result);
+
+                    $("#display").html('<p>' + t + '</p>'+'<img src='+i+' width="80" height="80"></img>');
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                    $("#display").html('<h3>USER NOT FOUND</h3>')
+                }
+
+            });
+        });
+
+
+        //https://newsapi.org/v2/everything?q=bitcoin&from=2018-0205&sortBy=popularity&apiKey=9e4b4e7b43514fff99d45e510434098b
+    </script>
+</head>
+<body>
+Value: <input id="topic" type="text"/>
+<button id="search" onclick="topic()">Search</button>
+<div id="display"></div>
+</body>
+</html>
