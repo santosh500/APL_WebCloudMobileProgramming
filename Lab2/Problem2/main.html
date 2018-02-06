@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Calculator Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <button ng-click="myFunction()">CLick</button>
+        <div id="main1" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
+        <div id="main2" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
+        <div id="main3" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
+        <p>{{count}}</p>
+
+        <div class="container">
+            <h2>Basic Table</h2>
+            <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><div id="main4" ng-click = "colorChange('#main4')" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                    <th><div id="main5" ng-click = "colorChange('#main5')" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                    <th><div id="main6" ng-click = "colorChange('#main6')" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><div id="main7" ng-click = "colorChange('#main7')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td><div id="main8" ng-click = "colorChange('#main8')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td><div id="main9" ng-click = "colorChange('#main9')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                </tr>
+                <tr>
+                    <td><div id="main10" ng-click = "colorChange('#main10')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td><div id="main11" ng-click = "colorChange('#main11')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td><div id="main12" ng-click = "colorChange('#main12')" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2 id="mainH2" ng-bind="name23"></h2>
+        </div>
+
+
+
+
+
+
+
+    </div>
+    <script>
+        var gameArr = [1,2,3,4,5,6,7,8,9];
+        var player1Arr = [];
+        var player2Arr = [];
+        var app = angular.module('myApp',[]);
+        var myEl = angular.element(document.querySelector('#main1'));
+        var totalCount = 0;
+        var tally = 0;
+        app.controller('myCtrl',function($scope){
+            $scope.count = 0;
+            $scope.myFunction = function(){
+                    if(totalCount==4)
+                    {
+                        myEl.css('background-color','red');
+                    }
+                    $scope.count++;
+                    totalCount++;
+            }
+
+            $scope.colorChange = function(name){
+                var q = angular.element(document.querySelector('#mainH2'));
+                $scope.name23=name;
+                var myEl2 = angular.element(document.querySelector(name));
+                // if(tally==0)
+                // {
+                    myEl2.css('background-color','red');
+                    //tally++;
+                // }
+                // else
+                // {
+                //     myEl2.css('background-color','blue');
+                //     tally--;
+                // }
+                //
+                // $scope.count++;
+                // totalCount++;
+            }
+
+            $scope.colorChange2 = function(){
+                if(tally==0)
+                {
+                    myEl.css('background-color','red');
+                    tally++;
+                }
+                else
+                {
+                    myEl.css('background-color','blue');
+                    tally--;
+                }
+
+                $scope.count++;
+                totalCount++;
+            }
+
+
+
+        });
+    </script>
+</body>
+</html>
