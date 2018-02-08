@@ -21,7 +21,7 @@
 <ul class="list-group">
     <li class="list-group-item">First item</li>
     <li class="list-group-item">Second item</li>
-    <li class="list-group-item" ng-repeat="item in items">{{item.title}}<button type="button" class="btn btn-success" ng-click="deleteItem($index)">Delete</button></li>
+    <li class="list-group-item {item.active}" ng-style = "myObj" ng-repeat="item in items">{{item.title}}<button type="button" class="btn btn-success" ng-click="completeItem($index)">Change</button><button type="button" class="btn btn-success" ng-click="deleteItem($index)">Delete</button></li>
 </ul>
 <button type="button" class="btn btn-success" ng-click="submitNewItem()">Add</button>
         <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>
@@ -33,16 +33,24 @@
     angularTodo.controller('angularTodoC', ['$scope', function ($scope) {
         // define list of items
         $scope.items = [];
+        $scope.wiki = "";
 
         // Write code to push new item
 
         $scope.submitNewItem = function () {
-            $scope.items.push({'title':'New man'})
+            $scope.items.push({'title':'New man'});
         };
 
         // Write code to complete item
         $scope.completeItem = function (index) {
-
+           // $scope.items.css('background-color','red');
+            var mainTitle = $scope.items[index].title
+            $scope.items[index].title = "Completed: " + mainTitle;
+            $scope.items[index].active = false;
+            // $scope.items[index].myObj = {
+            //     "background-color": "red",
+            //     "color": "blue"
+            // }
         };
 
         // Write code to delete item
