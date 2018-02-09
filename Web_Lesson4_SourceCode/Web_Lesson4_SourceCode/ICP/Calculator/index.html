@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="calculator.js"></script> // 1. write JS (controller) code in "calculator.js" to work with calculator
+    <link rel="stylesheet" src="main.css">
+    <script src="calculator.js"></script>
 </head>
 <body>
-// 2. write html(view) code to display the todo list
+<div ng-app="CalculatorApp" ng-controller="CalculatorController">
+<div class="container">
+    <h3 id="mainH3" ng-bind="name24"></h3>
+    <table  class="table" style="width:200px;">
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-4" ><button id="seven" class="btn btn-success">7</button></td>
+            <td  class="col-4"><button id="eight" class="btn btn-success">8</button></td>
+            <td  class="col-4"><button class="btn btn-success">9</button></td>
 
+        </tr>
+        <tr>
+            <td class="col-4"><button class="btn btn-success">4</button></td>
+            <td class="col-4"><button class="btn btn-success">5</button></td>
+            <td class="col-4"><button class="btn btn-success">6</button></td>
+        </tr>
+        <tr>
+            <td class="col-4"><button class="btn btn-success">1</button></td>
+            <td class="col-4"><button class="btn btn-success">2</button></td>
+            <td class="col-4"><button class="btn btn-success">3</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success">Add</button>
+    <h2 id="mainH2" ng-bind="name23"></h2>
+</div>
+</div>
+<script>
+    angular.module('CalculatorApp', [])
+        .controller('CalculatorController', function ($scope) {
+            // Write code simple calculator operations
+        });
+
+</script>
 </body>
 </html>
