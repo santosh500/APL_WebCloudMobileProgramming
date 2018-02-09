@@ -199,26 +199,123 @@
                                 }
                             }
                         }
+                    }
+
+
+
+                    if(i>=2)
+                    {
+                        if(player1Arr[i-1]==(testVal-3))
+                        {
+                            if(player1Arr[i-2]==(testVal-6))
+                            {
+                                $scope.name23 = "Game Over: Player 1 wins!";
+
+                                break;
+                            }
+                        }
 
                     }
-                    else
+
+                    if(player1Arr[i]==9) {
+                        if (i >= 2) {
+                            if (player1Arr[i - 1] == (testVal - 4)) {
+                                if (player1Arr[i - 2] == (testVal - 8)) {
+                                    $scope.name23 = "Game Over: Player 1 wins!";
+
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+
+                    if(player1Arr[i]==7)
                     {
                         if(i>=2)
                         {
-                            if(player1Arr[i-1]==(testVal-3))
+                            if(player1Arr[i-1]==(testVal-2))
                             {
-                                if(player1Arr[i-2]==(testVal-6))
+                                if(player1Arr[i-2]==(testVal-4))
                                 {
                                     $scope.name23 = "Game Over: Player 1 wins!";
 
                                     break;
                                 }
-                                console.log("TOUCHDOWN ALABAMA " + testVal);
                             }
 
                         }
+                    }
+
+
+
+                }
+
+
+                for(i =0; i<player2Arr.length; i++)
+                {
+                    var testVal = player2Arr[i];
+                    // console.log(player1Arr[i]);
+
+                    if((player2Arr[i]%3)==0)
+                    {
+                    if(i>=2)
+                    {
+                        if(player2Arr[i-1]==(testVal-1))
+                        {
+                            if(player2Arr[i-2]==(testVal-2))
+                            {
+                                $scope.name23 = "Game Over: Player 2 wins!";
+                                break;
+                            }
+                        }
+                    }}
+
+
+
+                    if(i>=2)
+                    {
+                        if(player2Arr[i-1]==(testVal-3))
+                        {
+                            if(player2Arr[i-2]==(testVal-6))
+                            {
+                                $scope.name23 = "Game Over: Player 2 wins!";
+
+                                break;
+                            }
+                        }
 
                     }
+
+                    if(player2Arr[i]==9) {
+                        if (i >= 2) {
+                            if (player2Arr[i - 1] == (testVal - 4)) {
+                                if (player2Arr[i - 2] == (testVal - 8)) {
+                                    $scope.name23 = "Game Over: Player 2 wins!";
+
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+                    if(player2Arr[i]==7)
+                    {
+                    if(i>=2)
+                    {
+                        if(player2Arr[i-1]==(testVal-2))
+                        {
+                            if(player2Arr[i-2]==(testVal-4))
+                            {
+                                $scope.name23 = "Game Over: Player 2 wins!";
+
+                                break;
+                            }
+                        }
+
+                    }}
+
+
                 }
 
                     //tally++;
