@@ -78,35 +78,149 @@
                 var a = false;
                 var b = false;
                 var c = false;
+                var isTaken = false;
                 var myEl2 = angular.element(document.querySelector(name));
                 // if(tally==0)
                 // {
-                    myEl2.css('background-color','red');
+
 
                     if(tally==0)
                     {
-                        myEl2.css('background-image','url("circle-outline.png")');
-                        tally++;
 
+                        // for(i =0; i<player1Arr.length; i++)
+                        // {
+                        //     console.log(player1Arr[i]);
+                        // }
 
-
-                        player1Arr.push(pos);
+                        for(i =0; i<player2Arr.length; i++)
+                        {
+                            if(pos==player2Arr[i])
+                            {
+                                isTaken = true;
+                                $scope.name23 = "Player 2 has taken this spot. Choose another one";
+                                break;
+                            }
+                        }
                         for(i =0; i<player1Arr.length; i++)
                         {
-                            console.log(player1Arr[i]);
+                            if(pos==player1Arr[i])
+                            {
+                                isTaken = true;
+                                $scope.name23 = "You has taken this spot. Choose another one";
+                                break;
+                            }
                         }
-                        $scope.name24="Player 2 Turn";
+                        if(isTaken==false)
+                        {
+                            myEl2.css('background-image','url("circle-outline.png")');
+                            tally++;
+                            $scope.name23 = "";
+                            player1Arr.push(pos);
+                            $scope.name24="Player 2 Turn";
+                        }
+
                     }
                     else
                     {
-                        myEl2.css('background-image','url("x-outline.png")');
-                        tally--;
-                        player2Arr.push(pos);
-                        $scope.name24="Player 1 Turn";
+
+                        for(i =0; i<player1Arr.length; i++)
+                        {
+                            if(pos==player1Arr[i])
+                            {
+                                isTaken = true;
+                                $scope.name23 = "Player 1 has taken this spot. Choose another one";
+                                break;
+                            }
+                        }
+                        for(i =0; i<player2Arr.length; i++)
+                        {
+                            if(pos==player2Arr[i])
+                            {
+                                isTaken = true;
+                                $scope.name23 = "You has taken this spot. Choose another one";
+                                break;
+                            }
+                        }
+                        if(isTaken==false)
+                        {
+
+                            $scope.name23 = "";
+                            myEl2.css('background-image','url("x-outline.png")');
+                            tally--;
+                            player2Arr.push(pos);
+                            $scope.name24="Player 1 Turn";
+                        }
+
+
+
+
                     }
+
+                if(isTaken==false)
+                {
+                    myEl2.css('background-color','red');
                     myEl2.css('background-size','60px 60px');
                     myEl2.css('background-repeat','no-repeat');
                     myEl2.css('background-position','center');
+                }
+
+                console.log("Player 2 information: ");
+                for(i =0; i<player2Arr.length; i++)
+                {
+                    console.log(player2Arr[i]);
+                }
+                console.log("Player 1 information: ");
+                for(i =0; i<player1Arr.length; i++)
+                {
+                    console.log(player1Arr[i]);
+                }
+
+                if((player2Arr.length + player1Arr.length) == 9)
+                {
+                    $scope.name23 = "Game Over: No one wins!";
+                }
+
+                player1Arr.sort();
+                player2Arr.sort();
+                for(i =0; i<player1Arr.length; i++)
+                {
+                    var testVal = player1Arr[i];
+                    // console.log(player1Arr[i]);
+                    if((player1Arr[i]%3)==0)
+                    {
+                        if(i>=2)
+                        {
+                            if(player1Arr[i-1]==(testVal-1))
+                            {
+                                if(player1Arr[i-2]==(testVal-2))
+                                {
+                                    $scope.name23 = "Game Over: Player 1 wins!";
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if(i>=2)
+                        {
+                            if(player1Arr[i-1]==(testVal-3))
+                            {
+                                if(player1Arr[i-2]==(testVal-6))
+                                {
+                                    $scope.name23 = "Game Over: Player 1 wins!";
+
+                                    break;
+                                }
+                                console.log("TOUCHDOWN ALABAMA " + testVal);
+                            }
+
+                        }
+
+                    }
+                }
+
                     //tally++;
                 // }
                 // else
