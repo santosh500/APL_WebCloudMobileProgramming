@@ -50,7 +50,7 @@
     <button class="btn btn-success" ng-click="subtract()">-</button>
     <button class="btn btn-success" ng-click="multiply()">x</button>
     <button class="btn btn-success" ng-click="divide()">/</button>
-    <button class="btn btn-success" ng-click="equal()">=</button>
+    <button class="btn btn-success" ng-click="equals()">=</button>
     <h2 id="mainH2" ng-bind="name23"></h2>
     <h2 id="mainH4" ng-bind="name27"></h2>
     <h2 id="mainH5" ng-bind="name28"></h2>
@@ -64,6 +64,8 @@
             var firstTrigger = false;
             var secondValue = 0;
             var secondTrigger = false;
+            var operation = "";
+            var isFirst = true;
             // Write code simple calculator operations
             $scope.passValue = function(val){
 
@@ -78,12 +80,54 @@
                    secondValue = val;
                    firstTrigger = false;
                    secondTrigger = false;
-                   $scope.name27 = secondValue;
+                   $scope.name28 = secondValue;
                }
             }
 
             $scope.add = function(){
-                $scope.name28 = firstValue + secondValue;
+                $scope.name27 = "+";
+                operation = "+";
+            }
+            $scope.subtract = function(){
+                $scope.name27 = "-";
+                operation = "-";
+            }
+            $scope.multiply = function(){
+                $scope.name27 = "x";
+                operation = "x";
+            }
+            $scope.divide = function(){
+                $scope.name27 = "/";
+                operation = "/";
+            }
+
+            $scope.equals = function(){
+
+                var tempVal = 0;
+                if(operation == "+")
+                {
+                    tempVal = firstValue + secondValue;
+
+                }
+                else if(operation=="-")
+                {
+                    tempVal = firstValue - secondValue;
+                }
+                else if(operation=="x")
+                {
+                    tempVal = firstValue*secondValue;
+                }
+                else
+                {
+                    tempVal = (firstValue/secondValue);
+                }
+                if(isFirst==true)
+                {
+                    isFirst=false;
+                }
+                operation = "";
+                $scope.name29 = tempVal;
+
 
             }
         });
