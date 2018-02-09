@@ -6,6 +6,8 @@
   box-sizing: border-box;
 }
 
+.delete-color{color: red}
+
 body {
   color: #333333;
   font-family: 'Roboto';

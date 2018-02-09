@@ -14,14 +14,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="todo.js"></script>
+
 </head>
 <body>
 <div ng-app="angularTodo" ng-controller="angularTodoC">
     <div class="container">
+        <label for="usr">List Item:</label>
+        <input type="text" name="listItem" ng-model="listItem" required class="form-control" id="usr">
+        <br>
 <ul class="list-group">
     <li class="list-group-item">First item</li>
     <li class="list-group-item">Second item</li>
-    <li class="list-group-item {item.active}" ng-style = "myObj" ng-repeat="item in items">{{item.title}}<button type="button" class="btn btn-success" ng-click="completeItem($index)">Change</button><button type="button" class="btn btn-success" ng-click="deleteItem($index)">Delete</button></li>
+    <li class="list-group-item" ng-class="{'delete-color': item.checked}" ng-repeat="item in items">{{item.title}}<input type="checkbox" ng-model="item.checked"> <button type="button" class="btn btn-success" ng-click="completeItem($index)">Change</button><button type="button" class="btn btn-success" ng-click="deleteItem($index)">Delete</button></li>
 </ul>
 <button type="button" class="btn btn-success" ng-click="submitNewItem()">Add</button>
         <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>
@@ -38,7 +42,7 @@
         // Write code to push new item
 
         $scope.submitNewItem = function () {
-            $scope.items.push({'title':'New man'});
+            $scope.items.push({'title':$scope.listItem});
         };
 
         // Write code to complete item
