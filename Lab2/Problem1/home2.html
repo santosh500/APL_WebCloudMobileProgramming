@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Home Page</title>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://newsapi.org/v2/everything?q=bitcoin&from=2018-0205&sortBy=popularity&apiKey=9e4b4e7b43514fff99d45e510434098b',
+                success: function (result) {
+                    //var t = result.articles.length;
+                    var author = result.articles[1].author;
+                    var photo = result.articles[1].urlToImage;
+                    var title = result.articles[1].title;
+                    var timeStamp = result.articles[1].publishedAt;
+                    var url = result.articles[1].url;
+                    console.log(result);
+
+                    $("#display").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="80" height="80"></img></a>' +'<p>' + timeStamp + '</p>');
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                    $("#display").html('<h3>USER NOT FOUND</h3>')
+                }
+
+            });
+        });
+    </script>
+    <style>
+        jumbotron-fluid{
+            background-color: purple;
+        }
+        #archie{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+
+<div id="archie" class="jumbotron jumbotron-fluid">
+    <div align="center" id="topLayer" class="container">
+        <h1>BBC News Page</h1>
+        <p>Search for top News Stories</p>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+
+        <input type="text" placeholder="Enter Search" class="form-control" id="usr">
+    </div>
+    <div align="center">
+        <div id="display"></div>
+    </div>
+</div>
+<!--
+Value: <input id="topic" type="text"/>
+<button id="search" onclick="topic()">Search</button>
+<div id="display"></div>-->
+</body>
+</html>
