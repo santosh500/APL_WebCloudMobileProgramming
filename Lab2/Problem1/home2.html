@@ -19,27 +19,35 @@
     <title>Home Page</title>
     <script>
         $(document).ready(function(){
-            $.ajax({
-                url: 'https://newsapi.org/v2/everything?q=bitcoin&from=2018-0205&sortBy=popularity&apiKey=9e4b4e7b43514fff99d45e510434098b',
-                success: function (result) {
-                    //var t = result.articles.length;
-                    var author = result.articles[1].author;
-                    var photo = result.articles[1].urlToImage;
-                    var title = result.articles[1].title;
-                    var timeStamp = result.articles[1].publishedAt;
-                    var url = result.articles[1].url;
-                    console.log(result);
-
-                    $("#display").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="80" height="80"></img></a>' +'<p>' + timeStamp + '</p>');
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
 
 
-                    $("#display").html('<h3>USER NOT FOUND</h3>')
-                }
+            $("#searchButton").click(function(){
+                var searchField = $('#textBox').val();
+                $.ajax({
+                    url: 'https://newsapi.org/v2/everything?q=' + searchField+'&from=2018-0205&sortBy=popularity&apiKey=9e4b4e7b43514fff99d45e510434098b',
+                    success: function (result) {
+                        //var t = result.articles.length;
+                        var author = result.articles[1].author;
+                        var photo = result.articles[1].urlToImage;
+                        var title = result.articles[1].title;
+                        var timeStamp = result.articles[1].publishedAt;
+                        var url = result.articles[1].url;
+                        console.log(result);
 
+                        $("#display").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                        $("#carousel1").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                        $("#carousel2").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                        $("#carousel3").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                        $("#display").html('<h3>USER NOT FOUND</h3>')
+                    }
+
+                });
             });
+
         });
     </script>
     <style>
@@ -61,11 +69,41 @@
 </div>
 <div class="container">
     <div class="form-group">
+        <span><input type="text" placeholder="Enter Information to Search" class="form-control" id="textBox"><button id="searchButton" class="btn btn-success">Search</button></span>
 
-        <input type="text" placeholder="Enter Search" class="form-control" id="usr">
     </div>
     <div align="center">
         <div id="display"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div id="carousel1" class="carousel-item active">
+            </div>
+            <div id="carousel2" class="carousel-item">
+            </div>
+            <div id="carousel3" class="carousel-item">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
 </div>
 <!--
