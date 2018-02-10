@@ -31,18 +31,28 @@
                         var photo = result.articles[1].urlToImage;
                         var title = result.articles[1].title;
                         var timeStamp = result.articles[1].publishedAt;
-                        var url = result.articles[1].url;
+                        var url= result.articles[1].url;
+                        var author1 = result.articles[2].author;
+                        var photo1 = result.articles[2].urlToImage;
+                        var title1 = result.articles[2].title;
+                        var timeStamp1 = result.articles[2].publishedAt;
+                        var url1 = result.articles[2].url;
+                        var author2 = result.articles[3].author;
+                        var photo2 = result.articles[3].urlToImage;
+                        var title2 = result.articles[3].title;
+                        var timeStamp2 = result.articles[3].publishedAt;
+                        var url2 = result.articles[3].url;
                         console.log(result);
 
-                        $("#display").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
-                        $("#carousel1").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
-                        $("#carousel2").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
-                        $("#carousel3").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                       // $("#display").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="400" height="250"></img></a>' +'<p>' + timeStamp + '</p>');
+                        $("#carousel1").html('<p>' + title + '</p>'+ '<p>' + author + '</p><a href='+url + ' target="_blank">' +'<img src='+photo+' class="rounded" width="1200" height="750"></img></a>' +'<p>' + timeStamp + '</p>');
+                        $("#carousel2").html('<p>' + title1 + '</p>'+ '<p>' + author1 + '</p><a href='+url1 + ' target="_blank">' +'<img src='+photo1+' class="rounded" width="1200" height="750"></img></a>' +'<p>' + timeStamp1 + '</p>');
+                        $("#carousel3").html('<p>' + title2 + '</p>'+ '<p>' + author2 + '</p><a href='+url2 + ' target="_blank">' +'<img src='+photo2+' class="rounded" width="1200" height="750"></img></a>' +'<p>' + timeStamp2 + '</p>');
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
 
 
-                        $("#display").html('<h3>USER NOT FOUND</h3>')
+                        $("#display").html('<h3>ITEM NOT FOUND</h3>')
                     }
 
                 });
@@ -88,7 +98,7 @@
         </ul>
 
         <!-- The slideshow -->
-        <div class="carousel-inner">
+        <div align="center" class="carousel-inner">
             <div id="carousel1" class="carousel-item active">
             </div>
             <div id="carousel2" class="carousel-item">
