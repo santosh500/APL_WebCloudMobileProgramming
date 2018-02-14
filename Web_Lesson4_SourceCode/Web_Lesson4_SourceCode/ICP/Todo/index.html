@@ -20,15 +20,13 @@
 <div ng-app="angularTodo" ng-controller="angularTodoC">
     <div class="container">
         <label for="usr">List Item:</label>
-        <input type="text" name="listItem" ng-model="listItem" required class="form-control" id="usr">
+        <span><input type="text" name="listItem" ng-model="listItem" required class="form-control-sm" id="usr"><button type="button" class="btn btn-success" ng-click="submitNewItem()">Add</button></span>
         <br>
 <ul class="list-group">
-    <li class="list-group-item">First item</li>
-    <li class="list-group-item">Second item</li>
-    <li class="list-group-item" ng-class="{'delete-color': item.checked}" ng-repeat="item in items">{{item.title}}<input type="checkbox" ng-model="item.checked"> <button type="button" class="btn btn-success" ng-click="completeItem($index)">Change</button><button type="button" class="btn btn-success" ng-click="deleteItem($index)">Delete</button></li>
+    <li class="list-group-item" ng-class="{'delete-color': item.checked}" ng-repeat="item in items">{{item.title}}<span id="tacos"><input type="checkbox" ng-model="item.checked"><span>     </span><span>     </span><span>     </span><span>     </span><button type="button" class="btn btn-danger" ng-click="deleteItem($index)">Delete</button></span></li>
 </ul>
-<button type="button" class="btn btn-success" ng-click="submitNewItem()">Add</button>
-        <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>
+
+
     </div>
 
 <script>
@@ -50,7 +48,7 @@
            // $scope.items.css('background-color','red');
             var mainTitle = $scope.items[index].title
             $scope.items[index].title = "Completed: " + mainTitle;
-            $scope.items[index].active = false;
+
             // $scope.items[index].myObj = {
             //     "background-color": "red",
             //     "color": "blue"
@@ -63,89 +61,6 @@
             $scope.items.splice(index, 1);
         };
     }]);
-    // var gameArr = [1,2,3,4,5,6,7,8,9];
-    // var player1Arr = [];
-    // var player2Arr = [];
-    // var app = angular.module('myApp',[]);
-    // var myEl = angular.element(document.querySelector('#main1'));
-    // var totalCount = 0;
-    // var tally = 0;
-    // app.controller('myCtrl',function($scope){
-    //     $scope.count = 0;
-    //     $scope.myFunction = function(){
-    //         if(totalCount==4)
-    //         {
-    //             myEl.css('background-color','red');
-    //         }
-    //         $scope.count++;
-    //         totalCount++;
-    //     }
-    //
-    //     $scope.colorChange = function(name,pos){
-    //         var q = angular.element(document.querySelector('#mainH2'));
-    //         var a = false;
-    //         var b = false;
-    //         var c = false;
-    //         var myEl2 = angular.element(document.querySelector(name));
-    //         // if(tally==0)
-    //         // {
-    //         myEl2.css('background-color','red');
-    //
-    //         if(tally==0)
-    //         {
-    //             myEl2.css('background-image','url("circle-outline.png")');
-    //             tally++;
-    //
-    //
-    //
-    //             player1Arr.push(pos);
-    //             for(i =0; i<player1Arr.length; i++)
-    //             {
-    //                 console.log(player1Arr[i]);
-    //             }
-    //             $scope.name24="Player 2 Turn";
-    //         }
-    //         else
-    //         {
-    //             myEl2.css('background-image','url("x-outline.png")');
-    //             tally--;
-    //             player2Arr.push(pos);
-    //             $scope.name24="Player 1 Turn";
-    //         }
-    //         myEl2.css('background-size','60px 60px');
-    //         myEl2.css('background-repeat','no-repeat');
-    //         myEl2.css('background-position','center');
-    //         //tally++;
-    //         // }
-    //         // else
-    //         // {
-    //         //     myEl2.css('background-color','blue');
-    //         //     tally--;
-    //         // }
-    //         //
-    //         // $scope.count++;
-    //         // totalCount++;
-    //     }
-    //
-    //     $scope.colorChange2 = function(){
-    //         if(tally==0)
-    //         {
-    //             myEl.css('background-color','red');
-    //             tally++;
-    //         }
-    //         else
-    //         {
-    //             myEl.css('background-color','blue');
-    //             tally--;
-    //         }
-    //
-    //         $scope.count++;
-    //         totalCount++;
-    //     }
-    //
-    //
-    //
-    // });
 </script>
 
 </body>

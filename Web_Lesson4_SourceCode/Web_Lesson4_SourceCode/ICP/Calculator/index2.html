@@ -1,0 +1,155 @@
+]<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" src="main.css">
+    <script src="calculator.js"></script>
+    <style>
+        .texas{
+            padding: 10px;
+        }
+        .bama{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="CalculatorApp" ng-controller="CalculatorController">
+    <div class="container">
+        <h3 id="mainH3" ng-bind="name24"></h3>
+        <div class="row">
+            <span class="texas"><button id="seven" ng-click="passValue(7)" class="btn btn-success">7</button></span>
+            <span class="texas"><button id="eight" ng-click="passValue(8)" value="4"class="btn btn-success">8</button></span>
+            <span class="texas"><button ng-click="passValue(9)" class="btn btn-success">9</button>
+        </div>
+        <div class="row">
+            <span class="texas"><button ng-click="passValue(4)" class="btn btn-success">4</button></span>
+            <span class="texas"><button ng-click="passValue(5)" class="btn btn-success">5</button></span>
+            <span class="texas"><button ng-click="passValue(6)" class="btn btn-success">6</button></span>
+        </div>
+        <div class="row">
+
+            <span class="texas"><button ng-click="passValue(1)" class="btn btn-success">1</button></span>
+            <span class="texas"><button ng-click="passValue(2)" class="btn btn-success">2</button></span>
+            <span class="texas"><button ng-click="passValue(3)" class="btn btn-success">3</button></span>
+        </div>
+        <div class="row">
+        <span class="texas"><button class="btn btn-success" ng-click="add()">+</button></span>
+            <span class="texas"><button class="btn btn-success" ng-click="subtract()">-</button></span>
+        <span class="texas"><button class="btn btn-success" ng-click="multiply()">x</button></span>
+        </div>
+        <div class="row">
+            <span class="texas"><button class="btn btn-success" ng-click="divide()">/</button></span>
+
+        <span class="texas"><button class="btn btn-info" ng-click="equals()">=</button></span>
+    <span class="texas"><button class="btn btn-danger" ng-click="clear()">Clear</button></span>
+        </div>
+        <h2 class="bama" id="mainH2" ng-bind="name23"></h2>
+        <h2 class="bama" id="mainH4" ng-bind="name27"></h2>
+        <h2 class="bama" id="mainH5" ng-bind="name28"></h2>
+        <h2 class="bama" id="mainH6" ng-bind="name29"></h2>
+    </div>
+</div>
+<script>
+    angular.module('CalculatorApp', [])
+        .controller('CalculatorController', function ($scope) {
+            var firstValue = 0;
+            var firstTrigger = false;
+            var secondValue = 0;
+            var secondTrigger = false;
+            var operation = "";
+            var isFirst = true;
+            // Write code simple calculator operations
+            $scope.passValue = function(val){
+
+                if(firstTrigger==false)
+                {
+                    firstValue = val;
+                    firstTrigger=true;
+                    $scope.name23 = val;
+                }
+                else
+                {
+                    secondValue = val;
+                    firstTrigger = false;
+                    secondTrigger = false;
+                    $scope.name28 = secondValue;
+                }
+            }
+
+            $scope.add = function(){
+                $scope.name27 = "+";
+                operation = "+";
+            }
+            $scope.subtract = function(){
+                $scope.name27 = "-";
+                operation = "-";
+            }
+            $scope.multiply = function(){
+                $scope.name27 = "x";
+                operation = "x";
+            }
+            $scope.divide = function(){
+                $scope.name27 = "/";
+                operation = "/";
+            }
+
+            $scope.clear = function(){
+                firstValue = 0;
+                firstTrigger = false;
+                secondValue = 0;
+                secondTrigger = false;
+                operation = "";
+                isFirst = true;
+                $scope.name23="";
+                $scope.name28="";
+                $scope.name27="";
+                $scope.name29="";
+
+            }
+
+            $scope.equals = function(){
+
+                var tempVal = 0;
+                if(operation == "+")
+                {
+                    tempVal = firstValue + secondValue;
+
+                }
+                else if(operation=="-")
+                {
+                    tempVal = firstValue - secondValue;
+                }
+                else if(operation=="x")
+                {
+                    tempVal = firstValue*secondValue;
+                }
+                else
+                {
+                    tempVal = (firstValue/secondValue);
+                }
+                if(isFirst==true)
+                {
+                    isFirst=false;
+                }
+                operation = "";
+                $scope.name29 = tempVal;
+            }
+        });
+
+</script>
+</body>
+</html>

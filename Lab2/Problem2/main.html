@@ -12,16 +12,12 @@
 </head>
 <body>
     <div ng-app="myApp" ng-controller="myCtrl">
-        <button ng-click="myFunction()">CLick</button>
-        <div id="main1" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
-        <div id="main2" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
-        <div id="main3" ng-click = "colorChange()" style="width: 80px; height: 80px; background-color: blue;"></div>
-        <p>{{count}}</p>
 
-        <div class="container">
-            <h2>Basic Table</h2>
-            <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>
-            <h3 id="mainH3" ng-bind="name24"></h3>
+        <div style="margin-top: 15%" class="container">
+            <div style="color:orange;"align="center" id="title1">
+                <h2>Tic-Tac-Toe</h2>
+                <h5>by Paul Charles</h5></div>
+             <h3 id="mainH3" ng-bind="name24"></h3>
             <table class="table">
                 <thead>
                 <tr>
@@ -62,6 +58,7 @@
         var myEl = angular.element(document.querySelector('#main1'));
         var totalCount = 0;
         var tally = 0;
+        var isOver = false;
         app.controller('myCtrl',function($scope){
             $scope.count = 0;
             $scope.myFunction = function(){
@@ -74,23 +71,18 @@
             }
 
             $scope.colorChange = function(name,pos){
-                var q = angular.element(document.querySelector('#mainH2'));
-                var a = false;
-                var b = false;
-                var c = false;
-                var isTaken = false;
-                var myEl2 = angular.element(document.querySelector(name));
-                // if(tally==0)
-                // {
+                if(isOver==false)
+                {
+                    var q = angular.element(document.querySelector('#mainH2'));
+                    var a = false;
+                    var b = false;
+                    var c = false;
+                    var isTaken = false;
+                    var myEl2 = angular.element(document.querySelector(name));
 
 
                     if(tally==0)
                     {
-
-                        // for(i =0; i<player1Arr.length; i++)
-                        // {
-                        //     console.log(player1Arr[i]);
-                        // }
 
                         for(i =0; i<player2Arr.length; i++)
                         {
@@ -156,178 +148,171 @@
 
                     }
 
-                if(isTaken==false)
-                {
-                    myEl2.css('background-color','red');
-                    myEl2.css('background-size','60px 60px');
-                    myEl2.css('background-repeat','no-repeat');
-                    myEl2.css('background-position','center');
-                }
-
-                console.log("Player 2 information: ");
-                for(i =0; i<player2Arr.length; i++)
-                {
-                    console.log(player2Arr[i]);
-                }
-                console.log("Player 1 information: ");
-                for(i =0; i<player1Arr.length; i++)
-                {
-                    console.log(player1Arr[i]);
-                }
-
-                if((player2Arr.length + player1Arr.length) == 9)
-                {
-                    $scope.name23 = "Game Over: No one wins!";
-                }
-
-                player1Arr.sort();
-                player2Arr.sort();
-                for(i =0; i<player1Arr.length; i++)
-                {
-                    var testVal = player1Arr[i];
-                    // console.log(player1Arr[i]);
-                    if((player1Arr[i]%3)==0)
+                    if(isTaken==false)
                     {
+                        myEl2.css('background-color','red');
+                        myEl2.css('background-size','60px 60px');
+                        myEl2.css('background-repeat','no-repeat');
+                        myEl2.css('background-position','center');
+                    }
+
+                    console.log("Player 2 information: ");
+                    for(i =0; i<player2Arr.length; i++)
+                    {
+                        console.log(player2Arr[i]);
+                    }
+                    console.log("Player 1 information: ");
+                    for(i =0; i<player1Arr.length; i++)
+                    {
+                        console.log(player1Arr[i]);
+                    }
+
+                    if((player2Arr.length + player1Arr.length) == 9)
+                    {
+                        $scope.name23 = "Game Over: No one wins!";
+                    }
+
+                    player1Arr.sort();
+                    player2Arr.sort();
+                    for(i =0; i<player1Arr.length; i++)
+                    {
+                        var testVal = player1Arr[i];
+                        // console.log(player1Arr[i]);
+                        if((player1Arr[i]%3)==0)
+                        {
+                            if(i>=2)
+                            {
+                                if(player1Arr[i-1]==(testVal-1))
+                                {
+                                    if(player1Arr[i-2]==(testVal-2))
+                                    {
+                                        $scope.name23 = "Game Over: Player 1 wins!";
+                                        isOver = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+
+
                         if(i>=2)
                         {
-                            if(player1Arr[i-1]==(testVal-1))
+                            if(player1Arr[i-1]==(testVal-3))
                             {
-                                if(player1Arr[i-2]==(testVal-2))
+                                if(player1Arr[i-2]==(testVal-6))
                                 {
                                     $scope.name23 = "Game Over: Player 1 wins!";
+                                    isOver = true;
                                     break;
                                 }
                             }
+
                         }
-                    }
 
+                        if(player1Arr[i]==9) {
+                            if (i >= 2) {
+                                if (player1Arr[i - 1] == (testVal - 4)) {
+                                    if (player1Arr[i - 2] == (testVal - 8)) {
+                                        $scope.name23 = "Game Over: Player 1 wins!";
+                                        isOver = true;
+                                        break;
+                                    }
+                                }
 
+                            }
+                        }
 
-                    if(i>=2)
-                    {
-                        if(player1Arr[i-1]==(testVal-3))
+                        if(player1Arr[i]==7)
                         {
-                            if(player1Arr[i-2]==(testVal-6))
+                            if(i>=2)
                             {
-                                $scope.name23 = "Game Over: Player 1 wins!";
-
-                                break;
-                            }
-                        }
-
-                    }
-
-                    if(player1Arr[i]==9) {
-                        if (i >= 2) {
-                            if (player1Arr[i - 1] == (testVal - 4)) {
-                                if (player1Arr[i - 2] == (testVal - 8)) {
-                                    $scope.name23 = "Game Over: Player 1 wins!";
-
-                                    break;
+                                if(player1Arr[i-1]==(testVal-2))
+                                {
+                                    if(player1Arr[i-2]==(testVal-4))
+                                    {
+                                        $scope.name23 = "Game Over: Player 1 wins!";
+                                        isOver = true;
+                                        break;
+                                    }
                                 }
-                            }
 
+                            }
                         }
+
+
+
                     }
 
-                    if(player1Arr[i]==7)
+
+                    for(i =0; i<player2Arr.length; i++)
                     {
+                        var testVal = player2Arr[i];
+                        // console.log(player1Arr[i]);
+
+                        if((player2Arr[i]%3)==0)
+                        {
+                            if(i>=2)
+                            {
+                                if(player2Arr[i-1]==(testVal-1))
+                                {
+                                    if(player2Arr[i-2]==(testVal-2))
+                                    {
+                                        $scope.name23 = "Game Over: Player 2 wins!";
+                                        isOver = true;
+                                        break;
+                                    }
+                                }
+                            }}
+
+
+
                         if(i>=2)
                         {
-                            if(player1Arr[i-1]==(testVal-2))
+                            if(player2Arr[i-1]==(testVal-3))
                             {
-                                if(player1Arr[i-2]==(testVal-4))
+                                if(player2Arr[i-2]==(testVal-6))
                                 {
-                                    $scope.name23 = "Game Over: Player 1 wins!";
-
-                                    break;
-                                }
-                            }
-
-                        }
-                    }
-
-
-
-                }
-
-
-                for(i =0; i<player2Arr.length; i++)
-                {
-                    var testVal = player2Arr[i];
-                    // console.log(player1Arr[i]);
-
-                    if((player2Arr[i]%3)==0)
-                    {
-                    if(i>=2)
-                    {
-                        if(player2Arr[i-1]==(testVal-1))
-                        {
-                            if(player2Arr[i-2]==(testVal-2))
-                            {
-                                $scope.name23 = "Game Over: Player 2 wins!";
-                                break;
-                            }
-                        }
-                    }}
-
-
-
-                    if(i>=2)
-                    {
-                        if(player2Arr[i-1]==(testVal-3))
-                        {
-                            if(player2Arr[i-2]==(testVal-6))
-                            {
-                                $scope.name23 = "Game Over: Player 2 wins!";
-
-                                break;
-                            }
-                        }
-
-                    }
-
-                    if(player2Arr[i]==9) {
-                        if (i >= 2) {
-                            if (player2Arr[i - 1] == (testVal - 4)) {
-                                if (player2Arr[i - 2] == (testVal - 8)) {
                                     $scope.name23 = "Game Over: Player 2 wins!";
-
+                                    isOver = true;
                                     break;
                                 }
                             }
 
                         }
-                    }
-                    if(player2Arr[i]==7)
-                    {
-                    if(i>=2)
-                    {
-                        if(player2Arr[i-1]==(testVal-2))
-                        {
-                            if(player2Arr[i-2]==(testVal-4))
-                            {
-                                $scope.name23 = "Game Over: Player 2 wins!";
 
-                                break;
+                        if(player2Arr[i]==9) {
+                            if (i >= 2) {
+                                if (player2Arr[i - 1] == (testVal - 4)) {
+                                    if (player2Arr[i - 2] == (testVal - 8)) {
+                                        $scope.name23 = "Game Over: Player 2 wins!";
+                                        isOver = true;
+                                        break;
+                                    }
+                                }
+
                             }
                         }
+                        if(player2Arr[i]==7)
+                        {
+                            if(i>=2)
+                            {
+                                if(player2Arr[i-1]==(testVal-2))
+                                {
+                                    if(player2Arr[i-2]==(testVal-4))
+                                    {
+                                        $scope.name23 = "Game Over: Player 2 wins!";
 
-                    }}
+                                        break;
+                                    }
+                                }
+
+                            }}
 
 
+                    }
                 }
 
-                    //tally++;
-                // }
-                // else
-                // {
-                //     myEl2.css('background-color','blue');
-                //     tally--;
-                // }
-                //
-                // $scope.count++;
-                // totalCount++;
             }
 
             $scope.colorChange2 = function(){

@@ -6,7 +6,11 @@
   box-sizing: border-box;
 }
 
-.delete-color{color: red}
+.delete-color{color: red; text-decoration: line-through;}
+
+#tacos{
+  float: right;
+}
 
 body {
   color: #333333;
