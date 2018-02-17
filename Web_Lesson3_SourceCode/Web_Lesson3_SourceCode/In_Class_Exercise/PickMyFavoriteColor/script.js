@@ -16,7 +16,9 @@ $(document).ready(function(){
 
     //1.As the page loa
     // ds add each color in the colors array to the div '#colors'
-
+    for (i = 0; i < colors.length; i++) {
+        $('#colors').prepend("<div class='item' id='orange" +  i + "' style='background-color: " + colors[i] + ";'><div>");
+    }
 
 //set the preview color to one of the colors in the colors array randomly
     setPreviewColor(colors[Math.floor(Math.random()*colors.length)]);
@@ -28,7 +30,37 @@ $(document).ready(function(){
     })
 //2.Write an event handler to handle the click the event on the add to favorite button so that the color gets added to the list of favorite colors,
 // the content of the input gets cleared and the focus gets back on the input
+    $("#add-to-favorite").click('#color',function(){
+        color = $('#color').val();
+        addBox(color);
+    })
 
+
+    $(".item").on('click', function(){
+        color = $(this).css('background-color');
+        setPreviewColor(color);
+    })
+    $(".item").hover(function(){
+        color = $(this).css('background-color');
+        setPreviewColor(color);
+    })
+
+    // for(i = 0; i <colors.length; i++)
+    // {
+    //     var bar = '#orange' +5
+    //     $(bar).hover(function(){
+    //         $('.preview').css("background-color",$(bar).css("background-color"));
+    //     }, function(){
+    //         $('.preview').css("background-color", "white");
+    //     });
+    // }
+
+
+    // $('#orange2').hover(function(){
+    //     $('.preview').css("background-color",$('#orange2').css("background-color"));
+    // }, function(){
+    //     $('.preview').css("background-color", "white");
+    // });
 //3.Write events handlers such that whenever any item in the favorite colors is clicked or hovered, the color gets displayed in the preview div
 
 });

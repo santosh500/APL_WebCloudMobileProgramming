@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo in Angular.js</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,500' rel='stylesheet'
+          type='text/css'>
+    <script src="https://use.fontawesome.com/21be5f2318.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="todo.js"></script>
+
+</head>
+<body>
+<div ng-app="angularTodo" ng-controller="angularTodoC">
+    <div class="container">
+        <label for="usr">List Item:</label>
+        <span><input type="text" name="listItem" ng-model="listItem" required class="form-control-sm" id="usr"><button type="button" class="btn btn-success" ng-click="submitNewItem()">Add</button></span>
+        <br>
+<ul class="list-group">
+    <li class="list-group-item" ng-class="{'delete-color': item.checked}" ng-repeat="item in items">{{item.title}}<span id="tacos"><input type="checkbox" ng-model="item.checked"><span>     </span><span>     </span><span>     </span><span>     </span><button type="button" class="btn btn-danger" ng-click="deleteItem($index)">Delete</button></span></li>
+</ul>
+
+
+    </div>
+
+<script>
+    var angularTodo = angular.module('angularTodo', []);
+
+    angularTodo.controller('angularTodoC', ['$scope', function ($scope) {
+        // define list of items
+        $scope.items = [];
+        $scope.wiki = "";
+
+        // Write code to push new item
+
+        $scope.submitNewItem = function () {
+            $scope.items.push({'title':$scope.listItem});
+        };
+
+        // Write code to complete item
+        $scope.completeItem = function (index) {
+           // $scope.items.css('background-color','red');
+            var mainTitle = $scope.items[index].title
+            $scope.items[index].title = "Completed: " + mainTitle;
+
+            // $scope.items[index].myObj = {
+            //     "background-color": "red",
+            //     "color": "blue"
+            // }
+        };
+
+        // Write code to delete item
+
+        $scope.deleteItem = function (index) {
+            $scope.items.splice(index, 1);
+        };
+    }]);
+</script>
+
+</body>
+</html>
