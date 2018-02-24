@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "angularTodo">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo in Angular.js</title>
+    <!--<link rel="stylesheet" href="main.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,500' rel='stylesheet'
+          type='text/css'>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.css" >
+    <script src="https://use.fontawesome.com/21be5f2318.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="todo.js"></script>
+    <!--// 1. write JS (controller) code in "todo.js" to work with todo list-->
+    <style>
+        input:checked{
+            color: green;
+        }
+        .checkBox{
+            background-color: green;
+        }
+        ul{
+            list-style-type: none;
+        }
+        .inputBar{
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .completed{
+            color: green;
+            text-decoration: line-through;
+        }
+        .reset{
+            color: black;
+            text-decoration: none;
+        }
+        .trash-completed{
+            color: green;
+        }
+        .border{
+            border: 2px solid #d3d3d3;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 15px;
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 2. write html(view) code to display the todo list -->
+<div ng-controller = "angularTodoC" class="container">
+    <div class = "row">
+        <h1 style="text-align: center">To Do List</h1>
+    </div>
+    <div class="row">
+        <form id="form" ng-submit="submitNewItem(); resetForm(input)">
+            <input id="input" ng-model="inputString"  ng-Trim="false" class="inputBar" >
+        </form>
+    </div>
+    <ul id="todoList">
+        <div class="">
+            <li >
+                <div ng-repeat="count in items track by $index" class="border row" ng-class="{'trash-completed': complete}"s>
+                    <label class=" col-xs-11 col-lg-11 col-md-11 col-sm-11">
+                        <input type="checkbox" ng-model="complete" class="checkBox">
+                        <span ng-click="completeItem($index)" ng-class="{'completed': complete, 'reset':check==true}">{{count}}</span>
+                    </label>
+                    <span ng-click="deleteItem($index)"  class="col-xs-1 col-lg-1 col-md-1 col-sm-1"><i class="fas fa-trash-alt"></i></span>
+                </div>
+            </li>
+        </div>
+    </ul>
+</div>
+
+</body>
+</html>

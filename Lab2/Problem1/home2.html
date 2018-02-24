@@ -18,6 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Home Page</title>
     <script>
+        //Initializes script
         $(document).ready(function(){
 
 
@@ -59,7 +60,7 @@
             });
 
 
-
+            //Source Button
             $("#sourcehButton").click(function(){
                 var searchField = $('#textBoxSource').val();
                 $.ajax({
@@ -117,12 +118,14 @@
     </div>
 </div>
 <div class="container">
+    <!--Seach By Article-->
     <h5>Search by Article</h5>
     <div class="form-group">
         <span><input type="text" placeholder="Enter Information to Search" class="form-control" id="textBox"><button id="searchButton" class="btn btn-success">Search</button></span>
 
     </div>
     <br>
+    <!--Search by Source-->
     <h5>Search by Source</h5>
     <div class="form-group">
         <span><input type="text" placeholder="Enter Source to Search" class="form-control" id="textBoxSource"><button id="sourcehButton" class="btn btn-success">Search Souce</button></span>
@@ -135,16 +138,15 @@
     <br>
     <br>
     <br>
+    <!--Carousel usage for display-->
     <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="#demo" data-slide-to="0" class="active"></li>
             <li data-target="#demo" data-slide-to="1"></li>
             <li data-target="#demo" data-slide-to="2"></li>
         </ul>
 
-        <!-- The slideshow -->
         <div align="center" class="carousel-inner">
             <div id="carousel1" class="carousel-item active">
             </div>
@@ -154,7 +156,6 @@
             </div>
         </div>
 
-        <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
@@ -163,9 +164,5 @@
         </a>
     </div>
 </div>
-<!--
-Value: <input id="topic" type="text"/>
-<button id="search" onclick="topic()">Search</button>
-<div id="display"></div>-->
 </body>
 </html>

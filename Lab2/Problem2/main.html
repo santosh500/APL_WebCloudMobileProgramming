@@ -3,7 +3,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <meta charset="UTF-8">
-    <title>Calculator Game</title>
+    <title>Tic Tac Toe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,29 +17,28 @@
             <div style="color:orange;"align="center" id="title1">
                 <h2>Tic-Tac-Toe</h2>
                 <h5>by Paul Charles</h5></div>
-             <h3 id="mainH3" ng-bind="name24"></h3>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th><div id="main4" ng-click = "colorChange('#main4',1)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
-                    <th><div id="main5" ng-click = "colorChange('#main5',2)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
-                    <th><div id="main6" ng-click = "colorChange('#main6',3)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
-                </tr>
-                </thead>
+             <h3 align="center" id="mainH3" ng-bind="name24"></h3>
+            <table align="center" width="300">
                 <tbody>
                 <tr>
-                    <td><div id="main7" ng-click = "colorChange('#main7',4)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
-                    <td><div id="main8" ng-click = "colorChange('#main8',5)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
-                    <td><div id="main9" ng-click = "colorChange('#main9',6)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <th class="col-4"><div id="main4" ng-click = "colorChange('#main4',1)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                    <th class="col-4"><div id="main5" ng-click = "colorChange('#main5',2)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                    <th class="col-4"><div id="main6" ng-click = "colorChange('#main6',3)" style="width: 80px; height: 80px; background-color: blue;"></div></th>
+                </tr>
+
+                <tr>
+                    <td class="col-4"><div id="main7" ng-click = "colorChange('#main7',4)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td class="col-4"><div id="main8" ng-click = "colorChange('#main8',5)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td class="col-4"><div id="main9" ng-click = "colorChange('#main9',6)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
                 </tr>
                 <tr>
-                    <td><div id="main10" ng-click = "colorChange('#main10',7)" style="width: 80px; height: 80px; background-color: blue;  "></div></td>
-                    <td><div id="main11" ng-click = "colorChange('#main11',8)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
-                    <td><div id="main12" ng-click = "colorChange('#main12',9)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td class="col-4"><div id="main10" ng-click = "colorChange('#main10',7)" style="width: 80px; height: 80px; background-color: blue;  "></div></td>
+                    <td class="col-4"><div id="main11" ng-click = "colorChange('#main11',8)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
+                    <td class="col-4"><div id="main12" ng-click = "colorChange('#main12',9)" style="width: 80px; height: 80px; background-color: blue;"></div></td>
                 </tr>
                 </tbody>
             </table>
-            <h2 id="mainH2" ng-bind="name23"></h2>
+            <h2 align="center" id="mainH2" ng-bind="name23"></h2>
         </div>
 
 
