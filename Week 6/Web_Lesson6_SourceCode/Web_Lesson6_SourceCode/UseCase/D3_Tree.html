@@ -33,19 +33,33 @@
 <script src="dndTree.js"></script>
 <script>
 
+    var selectedNode = null;
+    var draggingNode = null;
+    var anchuraNodos=50;
+    var root;
+    var containertag=container.replace("#","");
     // ************** Generate the tree diagram	 *****************
+    //Size and the shape of the svg container and such
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 960 - margin.right - margin.left,
         height = 500 - margin.top - margin.bottom;
 
     var i = 0;
 
+    //Assigns the variable/function tree to the d3.js funciton thatis used to assing and calculate the data required
+    //for nodes and the links to our diagram
     var tree = d3.layout.tree()
-        .size([height, width]);
+        .size([height, width])
 
+
+    //Help draw path between two points such that hte lne exhibtis nice curves
+    //This is just declaring the function that wil be used
     var diagonal = d3.svg.diagonal()
-        .projection(function(d) { return [d.y, d.x]; });
+        .projection(function(d) { return [d.y, d.x]; })
 
+
+    //Appends SVG working area to the body of web page and creates group elements <g>
+    //This will contain our svg objects (nodes, text, links)
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.right + margin.left)
         .attr("height", height + margin.top + margin.bottom)
@@ -57,49 +71,49 @@
         root = treeData[0];
         update(root);
     });
-//
-//    function update(source) {
-//
-//        // Compute the new tree layout.
-//        var nodes = tree.nodes(root).reverse(),
-//            links = tree.links(nodes);
-//
-//        // Normalize for fixed-depth.
-//        nodes.forEach(function(d) { d.y = d.depth * 180; });
-//
-//        // Declare the nodes…
-//        var node = svg.selectAll("g.node")
-//            .data(nodes, function(d) { return d.id || (d.id = ++i); });
-//
-//        // Enter the nodes.
-//        var nodeEnter = node.enter().append("g")
-//            .attr("class", "node")
-//            .attr("transform", function(d) {
-//                return "translate(" + d.y + "," + d.x + ")"; });
-//
-//        nodeEnter.append("circle")
-//            .attr("r", 10)
-//            .style("fill", "#fff");
-//
-//        nodeEnter.append("text")
-//            .attr("x", function(d) {
-//                return d.children || d._children ? -13 : 13; })
-//            .attr("dy", ".35em")
-//            .attr("text-anchor", function(d) {
-//                return d.children || d._children ? "end" : "start"; })
-//            .text(function(d) { return d.name; })
-//            .style("fill-opacity", 1);
-//
-//        // Declare the links…
-//        var link = svg.selectAll("path.link")
-//            .data(links, function(d) { return d.target.id; });
-//
-//        // Enter the links.
-//        link.enter().insert("path", "g")
-//            .attr("class", "link")
-//            .attr("d", diagonal);
-//
-//    }
+
+   function update(source) {
+
+       // Compute the new tree layout.
+       var nodes = tree.nodes(root).reverse(),
+           links = tree.links(nodes);
+
+       // Normalize for fixed-depth.
+       nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+       // Declare the nodes…
+       var node = svg.selectAll("g.node")
+           .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+       // Enter the nodes.
+       var nodeEnter = node.enter().append("g")
+           .attr("class", "node")
+           .attr("transform", function(d) {
+               return "translate(" + d.y + "," + d.x + ")"; });
+
+       nodeEnter.append("circle")
+           .attr("r", 10)
+           .style("fill", "#fff");
+
+       nodeEnter.append("text")
+           .attr("x", function(d) {
+               return d.children || d._children ? -13 : 13; })
+           .attr("dy", ".35em")
+           .attr("text-anchor", function(d) {
+               return d.children || d._children ? "end" : "start"; })
+           .text(function(d) { return d.name; })
+           .style("fill-opacity", 1);
+
+       // Declare the links…
+       var link = svg.selectAll("path.link")
+           .data(links, function(d) { return d.target.id; });
+
+       // Enter the links.
+       link.enter().insert("path", "g")
+           .attr("class", "link")
+           .attr("d", diagonal);
+
+   }
 
 </script>
 
