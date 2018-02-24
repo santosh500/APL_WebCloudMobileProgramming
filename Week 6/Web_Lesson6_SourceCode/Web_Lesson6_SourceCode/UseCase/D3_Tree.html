@@ -7,19 +7,45 @@
 
     <style>
 
+        .node {
+            cursor: pointer;
+        }
+
+        .overlay{
+            background-color:#EEE;
+        }
+
         .node circle {
             fill: #fff;
             stroke: steelblue;
-            stroke-width: 3px;
+            stroke-width: 1.5px;
         }
 
-        .node text { font: 12px sans-serif; }
+        .node text {
+            font-size:10px;
+            font-family:sans-serif;
+        }
 
         .link {
             fill: none;
             stroke: #ccc;
-            stroke-width: 2px;
+            stroke-width: 1.5px;
         }
+
+        .templink {
+            fill: none;
+            stroke: red;
+            stroke-width: 3px;
+        }
+
+        .ghostCircle.show{
+            display:block;
+        }
+
+        .ghostCircle, .activeDrag .ghostCircle{
+            display: none;
+        }
+
 
     </style>
 
@@ -33,16 +59,12 @@
 <script src="dndTree.js"></script>
 <script>
 
-    var selectedNode = null;
-    var draggingNode = null;
-    var anchuraNodos=50;
+
     var root;
-    var containertag=container.replace("#","");
+
     // ************** Generate the tree diagram	 *****************
     //Size and the shape of the svg container and such
-    var margin = {top: 20, right: 120, bottom: 20, left: 120},
-        width = 960 - margin.right - margin.left,
-        height = 500 - margin.top - margin.bottom;
+  
 
     var i = 0;
 
