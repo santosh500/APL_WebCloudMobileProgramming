@@ -1,5 +1,6 @@
 var Twitter = require('twitter');
-
+var http = require('http');
+var fs = require('fs');
 var client = new Twitter({
     consumer_key: 'NrAYNgxAWrzadiuCUNmT0gahq',
     consumer_secret: 'hDEJvT3VSWwARsGdhHyYCRckAltAM73wzQ8Hm1Knk0vyk6RKFn',
@@ -20,6 +21,12 @@ client.get('friends/list', params, function(error, tweets, response) {
         for(i=0; i<tacos.length; i++)
         {
             console.log(tacos[i].screen_name);
+            var server=http.createServer(function(req,res){
+                res.writeHead(tacos[i].screen_name, {'Content-Type': 'text/html'});
+                var myReadStream = fs.createReadStream(_dirname + '/index.html', 'utf8');
+                myReadStream.pipe(res);
+            });
+
         }
         console.log(tacos.length);
         console.log('car');
