@@ -78,6 +78,7 @@ app.get('/delete/:toBeDeleted_id', function (req, res) {
 
 app.get('/update/:toBeUpdated_id', function (req, res) {
     //3.connect to MongoDB. Handle the error and write the logic for updating the selected field
+    console.log(res);
 });
 
 
