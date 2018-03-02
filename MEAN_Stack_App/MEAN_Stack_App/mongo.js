@@ -55,6 +55,22 @@ app.get('/get', function (req, res) {
 
 app.get('/delete/:toBeDeleted_id', function (req, res) {
     // 2.Connect to MongoDB . Handle the error and write the logic for deleting the desired book
+    console.log(req.url);
+    var k = req.url;
+    var id2 = k.split("/delete/");
+    console.log(id2);
+    var o = parseInt(id2[1]);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbase = db.db("librarydatabase");
+        console.log(id2[1]);
+        var myquery = { "_id": ObjectID("5a98e814feeda11850ad6529") };
+        dbase.collection("books").deleteOne(myquery, function(err, obj) {
+            if (err) throw err;
+            console.log(obj.result.n + " document(s) deleted");
+            db.close();
+        });
+    });
 });
 
 
