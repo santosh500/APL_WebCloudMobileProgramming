@@ -4,7 +4,7 @@ var module2 = require('./module2');
 var sherry = require('./sherry');
 
 function onRequest(request, response){
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, {'Content-Type': 'text/html'});
     response.write(module1.myString);
     response.write(module1.myString);
     module1.myFunction();

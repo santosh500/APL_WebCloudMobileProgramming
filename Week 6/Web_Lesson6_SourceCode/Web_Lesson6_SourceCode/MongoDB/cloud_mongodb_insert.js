@@ -3,28 +3,16 @@
  */
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://lesson6:lesson6@ds239128.mlab.com:39128/aplwebdemo';
+var url = 'mongodb://root:tampa@ds123752.mlab.com:23752/librarydatabase';
 
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbase = db.db("aplwebdemo");
+    var dbase = db.db("librarydatabase");
     var myobj = [
-        { name: 'John', address: 'Highway 71'},
-        { name: 'Peter', address: 'Lowstreet 4'},
-        { name: 'Amy', address: 'Apple st 652'},
-        { name: 'Hannah', address: 'Mountain 21'},
-        { name: 'Michael', address: 'Valley 345'},
-        { name: 'Sandy', address: 'Ocean blvd 2'},
-        { name: 'Betty', address: 'Green Grass 1'},
-        { name: 'Richard', address: 'Sky st 331'},
-        { name: 'Susan', address: 'One way 98'},
-        { name: 'Vicky', address: 'Yellow Garden 2'},
-        { name: 'Ben', address: 'Park Lane 38'},
-        { name: 'William', address: 'Central st 954'},
-        { name: 'Chuck', address: 'Main Road 989'},
-        { name: 'Viola', address: 'Sideway 1633'}
+        { bookName: 'The Bible', authorName: 'Several', noOfCopies:'100',edition:'Tenth',ISBN:'2212312'}
+
     ];
-    dbase.collection("newCollection").insertMany(myobj, function(err, res) {
+    dbase.collection("books").insertMany(myobj, function(err, res) {
         if (err) throw err;
         console.log("Number of records inserted: " + res.insertedCount);
         db.close();

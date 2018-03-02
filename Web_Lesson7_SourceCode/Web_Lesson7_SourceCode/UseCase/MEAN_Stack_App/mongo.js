@@ -8,7 +8,7 @@ var express = require('express');
 var cors = require('cors');
 var app = express();
 
-var url='mongodb://foo:foo@ds147668.mlab.com:47668/web_demo';//1.Modify this url with the credentials of your db name and password.
+var url='mongodb://root:tampa@ds123752.mlab.com:23752/librarydatabase';//1.Modify this url with the credentials of your db name and password.
 var ObjectID = require('mongodb').ObjectID;
 
 app.use(cors());
@@ -55,6 +55,24 @@ app.get('/get', function (req, res) {
 
 app.get('/delete/:toBeDeleted_id', function (req, res) {
     // 2.Connect to MongoDB . Handle the error and write the logic for deleting the desired book
+    //console.log(res.writable);
+    console.log(req.url);
+    var k = req.url;
+    var id2 = k.split("/delete/");
+    console.log(id2);
+    var o = parseInt(id2[1]);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbase = db.db("librarydatabase");
+        console.log(id2[1]);
+        var myquery = { "_id": ObjectId("5a98e814feeda11850ad6529") };
+        dbase.collection("books").deleteOne(myquery, function(err, obj) {
+            if (err) throw err;
+            console.log(obj.result.n + " document(s) deleted");
+            db.close();
+        });
+    });
+
 });
 
 
