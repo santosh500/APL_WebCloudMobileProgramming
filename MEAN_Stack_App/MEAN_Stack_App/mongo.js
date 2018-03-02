@@ -64,7 +64,7 @@ app.get('/delete/:toBeDeleted_id', function (req, res) {
         if (err) throw err;
         var dbase = db.db("librarydatabase");
         console.log(id2[1]);
-        var myquery = { "_id": ObjectID("5a98e814feeda11850ad6529") };
+        var myquery = { "_id": ObjectID(id2[1]) };
         dbase.collection("books").deleteOne(myquery, function(err, obj) {
             if (err) throw err;
             console.log(obj.result.n + " document(s) deleted");
