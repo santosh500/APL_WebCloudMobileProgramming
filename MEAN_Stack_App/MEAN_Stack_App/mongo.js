@@ -76,18 +76,19 @@ app.get('/delete/:toBeDeleted_id', function (req, res) {
 
 app.get('/update/:toBeUpdated_id', function (req, res) {
     //3.connect to MongoDB. Handle the error and write the logic for updating the selected field
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        var dbase = db.db("aplwebdemo");
-        var myquery = { address: /^S/ };
-        var newvalues = {$set: {name: "Minnie"} };
-        var myoptions = { multi: true };
-        dbase.collection("newCollection").updateMany(myquery, newvalues, myoptions, function(err, res) {
-            if (err) throw err;
-            console.log(res.result.nModified + " record(s) updated");
-            db.close();
-        });
-    });
+    // MongoClient.connect(url, function(err, db) {
+    //     if (err) throw err;
+    //     var dbase = db.db("aplwebdemo");
+    //     var myquery = { address: /^S/ };
+    //     var newvalues = {$set: {name: "Minnie"} };
+    //     var myoptions = { multi: true };
+    //     dbase.collection("newCollection").updateMany(myquery, newvalues, myoptions, function(err, res) {
+    //         if (err) throw err;
+    //         console.log(res.result.nModified + " record(s) updated");
+    //         db.close();
+    //     });
+    // });
+    console.log(res);
 
 });
 
