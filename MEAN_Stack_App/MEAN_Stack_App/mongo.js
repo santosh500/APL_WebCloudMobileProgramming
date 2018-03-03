@@ -75,20 +75,21 @@ app.get('/delete/:toBeDeleted_id', function (req, res) {
 
 
 app.get('/update/:toBeUpdated_id', function (req, res) {
-    //3.connect to MongoDB. Handle the error and write the logic for updating the selected field
-    // MongoClient.connect(url, function(err, db) {
-    //     if (err) throw err;
-    //     var dbase = db.db("aplwebdemo");
-    //     var myquery = { address: /^S/ };
-    //     var newvalues = {$set: {name: "Minnie"} };
-    //     var myoptions = { multi: true };
-    //     dbase.collection("newCollection").updateMany(myquery, newvalues, myoptions, function(err, res) {
-    //         if (err) throw err;
-    //         console.log(res.result.nModified + " record(s) updated");
-    //         db.close();
-    //     });
-    // });
-    console.log(res);
+
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbase = db.db("librarydatabase");
+        var myquery = { "_id": ObjectID(req.query._id) };
+        var newvalues = {$set: {bookName: req.query.bookName, authorName: req.query.authorName, ISBN: req.query.ISBN} };
+        var myoptions = { multi: true };
+        dbase.collection("books").updateMany(myquery, newvalues, myoptions, function(err, res) {
+            if (err) throw err;
+            console.log(res.result.nModified + " record(s) updated");
+            db.close();
+        });
+    });
+    console.log(req.query._id);
+    console.log(req.query.authorName);
 
 });
 
