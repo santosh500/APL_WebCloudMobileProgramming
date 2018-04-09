@@ -32,8 +32,6 @@ client.get('friends/list', params, function(error, tweets, response) {
             });
 
         }
-        console.log(tacos.length);
-        console.log('car');
     }
 });
 

@@ -1,14 +1,9 @@
 var http=require('http');
-var module1 = require('./module1');
-var module2 = require('./module2');
-var sherry = require('./sherry');
+var twitterHelp = require('./twitterHelper');
 
 function onRequest(request, response){
     response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write(module1.myString);
-    response.write(module1.myString);
-    module1.myFunction();
-    var q = sherry.myArray;
+    var q = twitterHelp.myArray;
     for(i=0; i<15; i++)
     {
         response.write(q[i].screen_name + '\n');
